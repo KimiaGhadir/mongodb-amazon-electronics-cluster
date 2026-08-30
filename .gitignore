@@ -1,0 +1,98 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+coverage.xml
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Logs / temporary files
+# =========================
+*.log
+*.tmp
+*.temp
+*.bak
+
+# =========================
+# Large datasets
+# =========================
+data/
+datasets/
+*.jsonl
+*.jsonl.gz
+*.json.gz
+*.csv.gz
+
+# Keep the small sample dataset
+!results_sample/sample_500.jsonl
+
+# =========================
+# Runtime / checkpoints
+# =========================
+results/ingest_checkpoint.json
+
+# =========================
+# Temporary benchmark backups
+# =========================
+results/*_backup.csv
+results/*_backup.json
+results/*_backup.jsonl
+
+# Generated archives
+results/*.zip
+
+# =========================
+# MongoDB local data
+# =========================
+mongo-data/
+mongodb-data/
+db/
+dbdata/
+
+# =========================
+# Docker overrides
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Python packaging
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
