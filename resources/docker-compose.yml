@@ -1,0 +1,70 @@
+services:
+  mongo1:
+    image: mongo:7
+    container_name: mongo1
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: mongosh --quiet --eval "db.adminCommand('ping')"
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+  mongo2:
+    image: mongo:7
+    container_name: mongo2
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27018:27017"
+    healthcheck:
+      test: mongosh --quiet --eval "db.adminCommand('ping')"
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+  mongo3:
+    image: mongo:7
+    container_name: mongo3
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27019:27017"
+    healthcheck:
+      test: mongosh --quiet --eval "db.adminCommand('ping')"
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+  # Automatic replica set initializer
+  mongo-init:
+    image: mongo:7
+    depends_on:
+      mongo1:
+        condition: service_healthy
+      mongo2:
+        condition: service_healthy
+      mongo3:
+        condition: service_healthy
+    entrypoint: >
+      mongosh --host mongo1:27017 --eval '
+        rs.initiate({
+          _id: "rs0",
+          members: [
+            { _id: 0, host: "mongo1:27017" },
+            { _id: 1, host: "mongo2:27017" },
+            { _id: 2, host: "mongo3:27017" }
+          ]
+        })
+      '
+
+  dev:
+    build: .
+    profiles: [tools]
+    volumes: [".:/app"]
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mongo1
+      - mongo2
+      - mongo3

@@ -1,0 +1,225 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "$or": [
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Brand"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Digi-Tatoo"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Publisher"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Fourth Estate; First Edition (January 1, 2009)"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "queryHash": "1DF0D229",
+    "planCacheKey": "1DF0D229",
+    "optimizationTimeMillis": 988,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "SUBPLAN",
+      "inputStage": {
+        "stage": "COLLSCAN",
+        "filter": {
+          "$or": [
+            {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Brand"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Digi-Tatoo"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Publisher"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Fourth Estate; First Edition (January 1, 2009)"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "direction": "forward"
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 53,
+    "executionTimeMillis": 53599,
+    "totalKeysExamined": 0,
+    "totalDocsExamined": 1610012,
+    "executionStages": {
+      "stage": "SUBPLAN",
+      "nReturned": 53,
+      "executionTimeMillisEstimate": 41101,
+      "works": 1610013,
+      "advanced": 53,
+      "needTime": 1609959,
+      "needYield": 0,
+      "saveState": 1863,
+      "restoreState": 1863,
+      "isEOF": 1,
+      "inputStage": {
+        "stage": "COLLSCAN",
+        "filter": {
+          "$or": [
+            {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Brand"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Digi-Tatoo"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Publisher"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Fourth Estate; First Edition (January 1, 2009)"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "nReturned": 53,
+        "executionTimeMillisEstimate": 40914,
+        "works": 1610013,
+        "advanced": 53,
+        "needTime": 1609959,
+        "needYield": 0,
+        "saveState": 1863,
+        "restoreState": 1863,
+        "isEOF": 1,
+        "direction": "forward",
+        "docsExamined": 1610012
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "$or": [
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Brand",
+              "v": "Digi-Tatoo"
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Publisher",
+              "v": "Fourth Estate; First Edition (January 1, 2009)"
+            }
+          }
+        }
+      ]
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "1574b8bbc048",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786241036, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786241036, 1)"
+}

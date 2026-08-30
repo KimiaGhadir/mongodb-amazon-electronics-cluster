@@ -1,0 +1,400 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "$or": [
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Brand"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Digi-Tatoo"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Publisher"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Fourth Estate; First Edition (January 1, 2009)"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "queryHash": "1DF0D229",
+    "planCacheKey": "21C5C8A1",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "SUBPLAN",
+      "inputStage": {
+        "stage": "OR",
+        "inputStages": [
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Brand"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Digi-Tatoo"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Brand\", \"Brand\"]"
+                ],
+                "details.v": [
+                  "[\"Digi-Tatoo\", \"Digi-Tatoo\"]"
+                ]
+              }
+            }
+          },
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Publisher"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Fourth Estate; First Edition (January 1, 2009)"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Publisher\", \"Publisher\"]"
+                ],
+                "details.v": [
+                  "[\"Fourth Estate; First Edition (January 1, 2009)\", \"Fourth Estate; First Edition (January 1, 2009)\"]"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 53,
+    "executionTimeMillis": 537,
+    "totalKeysExamined": 53,
+    "totalDocsExamined": 53,
+    "executionStages": {
+      "stage": "SUBPLAN",
+      "nReturned": 53,
+      "executionTimeMillisEstimate": 497,
+      "works": 55,
+      "advanced": 53,
+      "needTime": 1,
+      "needYield": 0,
+      "saveState": 22,
+      "restoreState": 22,
+      "isEOF": 1,
+      "inputStage": {
+        "stage": "OR",
+        "nReturned": 53,
+        "executionTimeMillisEstimate": 497,
+        "works": 55,
+        "advanced": 53,
+        "needTime": 1,
+        "needYield": 0,
+        "saveState": 22,
+        "restoreState": 22,
+        "isEOF": 1,
+        "dupsTested": 53,
+        "dupsDropped": 0,
+        "inputStages": [
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Brand"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Digi-Tatoo"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "nReturned": 52,
+            "executionTimeMillisEstimate": 468,
+            "works": 53,
+            "advanced": 52,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 22,
+            "restoreState": 22,
+            "isEOF": 1,
+            "docsExamined": 52,
+            "alreadyHasObj": 0,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "nReturned": 52,
+              "executionTimeMillisEstimate": 0,
+              "works": 53,
+              "advanced": 52,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 22,
+              "restoreState": 22,
+              "isEOF": 1,
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Brand\", \"Brand\"]"
+                ],
+                "details.v": [
+                  "[\"Digi-Tatoo\", \"Digi-Tatoo\"]"
+                ]
+              },
+              "keysExamined": 52,
+              "seeks": 1,
+              "dupsTested": 52,
+              "dupsDropped": 0
+            }
+          },
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Publisher"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Fourth Estate; First Edition (January 1, 2009)"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "nReturned": 1,
+            "executionTimeMillisEstimate": 29,
+            "works": 2,
+            "advanced": 1,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 22,
+            "restoreState": 22,
+            "isEOF": 1,
+            "docsExamined": 1,
+            "alreadyHasObj": 0,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "nReturned": 1,
+              "executionTimeMillisEstimate": 5,
+              "works": 2,
+              "advanced": 1,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 22,
+              "restoreState": 22,
+              "isEOF": 1,
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Publisher\", \"Publisher\"]"
+                ],
+                "details.v": [
+                  "[\"Fourth Estate; First Edition (January 1, 2009)\", \"Fourth Estate; First Edition (January 1, 2009)\"]"
+                ]
+              },
+              "keysExamined": 1,
+              "seeks": 1,
+              "dupsTested": 1,
+              "dupsDropped": 0
+            }
+          }
+        ]
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "$or": [
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Brand",
+              "v": "Digi-Tatoo"
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Publisher",
+              "v": "Fourth Estate; First Edition (January 1, 2009)"
+            }
+          }
+        }
+      ]
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "1574b8bbc048",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786275219, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786275219, 1)"
+}

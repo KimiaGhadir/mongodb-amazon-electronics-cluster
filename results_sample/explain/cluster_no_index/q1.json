@@ -1,0 +1,88 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "parent_asin": {
+        "$eq": "B01MCZP7RF"
+      }
+    },
+    "queryHash": "853775CD",
+    "planCacheKey": "853775CD",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "COLLSCAN",
+      "filter": {
+        "parent_asin": {
+          "$eq": "B01MCZP7RF"
+        }
+      },
+      "direction": "forward"
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 1,
+    "executionTimeMillis": 1,
+    "totalKeysExamined": 0,
+    "totalDocsExamined": 500,
+    "executionStages": {
+      "stage": "COLLSCAN",
+      "filter": {
+        "parent_asin": {
+          "$eq": "B01MCZP7RF"
+        }
+      },
+      "nReturned": 1,
+      "executionTimeMillisEstimate": 0,
+      "works": 501,
+      "advanced": 1,
+      "needTime": 499,
+      "needYield": 0,
+      "saveState": 0,
+      "restoreState": 0,
+      "isEOF": 1,
+      "direction": "forward",
+      "docsExamined": 500
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "parent_asin": "B01MCZP7RF"
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "209f20e117c1",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786228557, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786228557, 1)"
+}

@@ -1,0 +1,117 @@
+# TA-compatible MongoDB project compose.
+# Core topology: MongoDB 7, replica set rs0, 1 Primary + 2 Secondary nodes.
+# Stability changes for a 16 GB Windows/WSL2 machine:
+# - Limit WiredTiger cache to 1 GB per mongod.
+# - Persist each node in its own named volume.
+# - Make mongo-init idempotent.
+
+services:
+  mongo1:
+    image: mongo:7
+    container_name: mongo1
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--wiredTigerCacheSizeGB", "1"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo1_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\""]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+  mongo2:
+    image: mongo:7
+    container_name: mongo2
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--wiredTigerCacheSizeGB", "1"]
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo2_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\""]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+  mongo3:
+    image: mongo:7
+    container_name: mongo3
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--wiredTigerCacheSizeGB", "1"]
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo3_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\""]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+  mongo-init:
+    image: mongo:7
+    depends_on:
+      mongo1:
+        condition: service_healthy
+      mongo2:
+        condition: service_healthy
+      mongo3:
+        condition: service_healthy
+    entrypoint: ["/bin/bash", "-lc"]
+    command: |
+      mongosh --host mongo1:27017 --quiet --eval '
+        try {
+          const cfg = rs.conf();
+          if (cfg && cfg._id === "rs0") {
+            print("Replica set rs0 is already initialized");
+            quit(0);
+          }
+        } catch (e) {
+          const cfg = {
+            _id: "rs0",
+            members: [
+              { _id: 0, host: "mongo1:27017" },
+              { _id: 1, host: "mongo2:27017" },
+              { _id: 2, host: "mongo3:27017" }
+            ]
+          };
+          printjson(rs.initiate(cfg));
+        }
+      '
+
+  dev:
+    build: .
+    profiles: ["tools"]
+    volumes:
+      - ".:/app"
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    environment:
+      MONGO_URI: mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0
+      MONGO_DB: amazon_electronics
+      MONGO_COLLECTION: products
+    depends_on:
+      mongo-init:
+        condition: service_completed_successfully
+
+  mongo-standalone:
+    image: mongo:7
+    container_name: mongo-standalone
+    profiles: ["benchmark"]
+    command: ["mongod", "--bind_ip_all", "--wiredTigerCacheSizeGB", "1"]
+    ports:
+      - "27117:27017"
+    volumes:
+      - mongo_standalone_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval \"db.adminCommand('ping').ok\""]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  mongo1_data:
+  mongo2_data:
+  mongo3_data:
+  mongo_standalone_data:

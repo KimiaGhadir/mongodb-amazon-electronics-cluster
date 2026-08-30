@@ -1,0 +1,132 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "parent_asin": {
+        "$eq": "B00MCW7G9M"
+      }
+    },
+    "queryHash": "853775CD",
+    "planCacheKey": "6F123EC0",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "FETCH",
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "parent_asin": 1
+        },
+        "indexName": "idx_parent_asin",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "parent_asin": []
+        },
+        "isUnique": true,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "parent_asin": [
+            "[\"B00MCW7G9M\", \"B00MCW7G9M\"]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 1,
+    "executionTimeMillis": 103,
+    "totalKeysExamined": 1,
+    "totalDocsExamined": 1,
+    "executionStages": {
+      "stage": "FETCH",
+      "nReturned": 1,
+      "executionTimeMillisEstimate": 101,
+      "works": 2,
+      "advanced": 1,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 1,
+      "restoreState": 1,
+      "isEOF": 1,
+      "docsExamined": 1,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 1,
+        "executionTimeMillisEstimate": 45,
+        "works": 2,
+        "advanced": 1,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 1,
+        "restoreState": 1,
+        "isEOF": 1,
+        "keyPattern": {
+          "parent_asin": 1
+        },
+        "indexName": "idx_parent_asin",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "parent_asin": []
+        },
+        "isUnique": true,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "parent_asin": [
+            "[\"B00MCW7G9M\", \"B00MCW7G9M\"]"
+          ]
+        },
+        "keysExamined": 1,
+        "seeks": 1,
+        "dupsTested": 0,
+        "dupsDropped": 0
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "parent_asin": "B00MCW7G9M"
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "a4c9b3d30f4a",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786275189, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786275189, 1)"
+}

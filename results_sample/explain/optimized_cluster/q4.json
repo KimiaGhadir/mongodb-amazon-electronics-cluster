@@ -1,0 +1,204 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "details": {
+        "$elemMatch": {
+          "$and": [
+            {
+              "k": {
+                "$eq": "Is Discontinued By Manufacturer"
+              }
+            },
+            {
+              "v": {
+                "$eq": "No"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "queryHash": "7E68C7AC",
+    "planCacheKey": "584EBD69",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "FETCH",
+      "filter": {
+        "details": {
+          "$elemMatch": {
+            "$and": [
+              {
+                "k": {
+                  "$eq": "Is Discontinued By Manufacturer"
+                }
+              },
+              {
+                "v": {
+                  "$eq": "No"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "details.k": 1,
+          "details.v": 1
+        },
+        "indexName": "idx_details_kv",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "details.k": [
+            "details"
+          ],
+          "details.v": [
+            "details"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "details.k": [
+            "[\"Is Discontinued By Manufacturer\", \"Is Discontinued By Manufacturer\"]"
+          ],
+          "details.v": [
+            "[\"No\", \"No\"]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 207,
+    "executionTimeMillis": 1,
+    "totalKeysExamined": 207,
+    "totalDocsExamined": 207,
+    "executionStages": {
+      "stage": "FETCH",
+      "filter": {
+        "details": {
+          "$elemMatch": {
+            "$and": [
+              {
+                "k": {
+                  "$eq": "Is Discontinued By Manufacturer"
+                }
+              },
+              {
+                "v": {
+                  "$eq": "No"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "nReturned": 207,
+      "executionTimeMillisEstimate": 1,
+      "works": 208,
+      "advanced": 207,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 0,
+      "restoreState": 0,
+      "isEOF": 1,
+      "docsExamined": 207,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 207,
+        "executionTimeMillisEstimate": 0,
+        "works": 208,
+        "advanced": 207,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 0,
+        "restoreState": 0,
+        "isEOF": 1,
+        "keyPattern": {
+          "details.k": 1,
+          "details.v": 1
+        },
+        "indexName": "idx_details_kv",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "details.k": [
+            "details"
+          ],
+          "details.v": [
+            "details"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "details.k": [
+            "[\"Is Discontinued By Manufacturer\", \"Is Discontinued By Manufacturer\"]"
+          ],
+          "details.v": [
+            "[\"No\", \"No\"]"
+          ]
+        },
+        "keysExamined": 207,
+        "seeks": 1,
+        "dupsTested": 207,
+        "dupsDropped": 0
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "details": {
+        "$elemMatch": {
+          "k": "Is Discontinued By Manufacturer",
+          "v": "No"
+        }
+      }
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "6edc0f0b4d37",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786228585, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786228585, 1)"
+}

@@ -1,0 +1,136 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "categories": {
+        "$eq": "Micro SD Cards"
+      }
+    },
+    "queryHash": "D0EEC9D3",
+    "planCacheKey": "DCE780A4",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "FETCH",
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "categories": 1
+        },
+        "indexName": "idx_categories",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "categories": [
+            "categories"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "categories": [
+            "[\"Micro SD Cards\", \"Micro SD Cards\"]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 5899,
+    "executionTimeMillis": 30112,
+    "totalKeysExamined": 5899,
+    "totalDocsExamined": 5899,
+    "executionStages": {
+      "stage": "FETCH",
+      "nReturned": 5899,
+      "executionTimeMillisEstimate": 27726,
+      "works": 5900,
+      "advanced": 5899,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 1215,
+      "restoreState": 1215,
+      "isEOF": 1,
+      "docsExamined": 5899,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 5899,
+        "executionTimeMillisEstimate": 134,
+        "works": 5900,
+        "advanced": 5899,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 1215,
+        "restoreState": 1215,
+        "isEOF": 1,
+        "keyPattern": {
+          "categories": 1
+        },
+        "indexName": "idx_categories",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "categories": [
+            "categories"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "categories": [
+            "[\"Micro SD Cards\", \"Micro SD Cards\"]"
+          ]
+        },
+        "keysExamined": 5899,
+        "seeks": 1,
+        "dupsTested": 5899,
+        "dupsDropped": 0
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "categories": "Micro SD Cards"
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "1574b8bbc048",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786275219, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786275219, 1)"
+}

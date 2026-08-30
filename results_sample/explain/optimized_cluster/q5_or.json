@@ -1,0 +1,400 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "$or": [
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Is Discontinued By Manufacturer"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "No"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Date First Available"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "August 2, 2014"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "queryHash": "1DF0D229",
+    "planCacheKey": "21C5C8A1",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "SUBPLAN",
+      "inputStage": {
+        "stage": "OR",
+        "inputStages": [
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Is Discontinued By Manufacturer"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "No"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Is Discontinued By Manufacturer\", \"Is Discontinued By Manufacturer\"]"
+                ],
+                "details.v": [
+                  "[\"No\", \"No\"]"
+                ]
+              }
+            }
+          },
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Date First Available"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "August 2, 2014"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Date First Available\", \"Date First Available\"]"
+                ],
+                "details.v": [
+                  "[\"August 2, 2014\", \"August 2, 2014\"]"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 208,
+    "executionTimeMillis": 2,
+    "totalKeysExamined": 208,
+    "totalDocsExamined": 208,
+    "executionStages": {
+      "stage": "SUBPLAN",
+      "nReturned": 208,
+      "executionTimeMillisEstimate": 0,
+      "works": 210,
+      "advanced": 208,
+      "needTime": 1,
+      "needYield": 0,
+      "saveState": 0,
+      "restoreState": 0,
+      "isEOF": 1,
+      "inputStage": {
+        "stage": "OR",
+        "nReturned": 208,
+        "executionTimeMillisEstimate": 0,
+        "works": 210,
+        "advanced": 208,
+        "needTime": 1,
+        "needYield": 0,
+        "saveState": 0,
+        "restoreState": 0,
+        "isEOF": 1,
+        "dupsTested": 208,
+        "dupsDropped": 0,
+        "inputStages": [
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Is Discontinued By Manufacturer"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "No"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "nReturned": 207,
+            "executionTimeMillisEstimate": 0,
+            "works": 208,
+            "advanced": 207,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "docsExamined": 207,
+            "alreadyHasObj": 0,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "nReturned": 207,
+              "executionTimeMillisEstimate": 0,
+              "works": 208,
+              "advanced": 207,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 1,
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Is Discontinued By Manufacturer\", \"Is Discontinued By Manufacturer\"]"
+                ],
+                "details.v": [
+                  "[\"No\", \"No\"]"
+                ]
+              },
+              "keysExamined": 207,
+              "seeks": 1,
+              "dupsTested": 207,
+              "dupsDropped": 0
+            }
+          },
+          {
+            "stage": "FETCH",
+            "filter": {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Date First Available"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "August 2, 2014"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "nReturned": 1,
+            "executionTimeMillisEstimate": 0,
+            "works": 2,
+            "advanced": 1,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "docsExamined": 1,
+            "alreadyHasObj": 0,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "nReturned": 1,
+              "executionTimeMillisEstimate": 0,
+              "works": 2,
+              "advanced": 1,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 1,
+              "keyPattern": {
+                "details.k": 1,
+                "details.v": 1
+              },
+              "indexName": "idx_details_kv",
+              "isMultiKey": true,
+              "multiKeyPaths": {
+                "details.k": [
+                  "details"
+                ],
+                "details.v": [
+                  "details"
+                ]
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "details.k": [
+                  "[\"Date First Available\", \"Date First Available\"]"
+                ],
+                "details.v": [
+                  "[\"August 2, 2014\", \"August 2, 2014\"]"
+                ]
+              },
+              "keysExamined": 1,
+              "seeks": 1,
+              "dupsTested": 1,
+              "dupsDropped": 0
+            }
+          }
+        ]
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "$or": [
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Is Discontinued By Manufacturer",
+              "v": "No"
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Date First Available",
+              "v": "August 2, 2014"
+            }
+          }
+        }
+      ]
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "209f20e117c1",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786228585, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786228585, 1)"
+}

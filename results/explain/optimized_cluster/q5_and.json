@@ -1,0 +1,565 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "$and": [
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Brand"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Digi-Tatoo"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Color"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Fresh Marble"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "queryHash": "1BAD40F5",
+    "planCacheKey": "E96B374E",
+    "optimizationTimeMillis": 113,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "FETCH",
+      "filter": {
+        "$and": [
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Color"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Fresh Marble"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Brand"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Digi-Tatoo"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "details.k": 1,
+          "details.v": 1
+        },
+        "indexName": "idx_details_kv",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "details.k": [
+            "details"
+          ],
+          "details.v": [
+            "details"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "details.k": [
+            "[\"Color\", \"Color\"]"
+          ],
+          "details.v": [
+            "[\"Fresh Marble\", \"Fresh Marble\"]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": [
+      {
+        "stage": "FETCH",
+        "filter": {
+          "$and": [
+            {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Brand"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Digi-Tatoo"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "details": {
+                "$elemMatch": {
+                  "$and": [
+                    {
+                      "k": {
+                        "$eq": "Color"
+                      }
+                    },
+                    {
+                      "v": {
+                        "$eq": "Fresh Marble"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "inputStage": {
+          "stage": "IXSCAN",
+          "keyPattern": {
+            "details.k": 1,
+            "details.v": 1
+          },
+          "indexName": "idx_details_kv",
+          "isMultiKey": true,
+          "multiKeyPaths": {
+            "details.k": [
+              "details"
+            ],
+            "details.v": [
+              "details"
+            ]
+          },
+          "isUnique": false,
+          "isSparse": false,
+          "isPartial": false,
+          "indexVersion": 2,
+          "direction": "forward",
+          "indexBounds": {
+            "details.k": [
+              "[\"Brand\", \"Brand\"]"
+            ],
+            "details.v": [
+              "[\"Digi-Tatoo\", \"Digi-Tatoo\"]"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 1,
+    "executionTimeMillis": 114,
+    "totalKeysExamined": 1,
+    "totalDocsExamined": 1,
+    "executionStages": {
+      "stage": "FETCH",
+      "filter": {
+        "$and": [
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Color"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Fresh Marble"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Brand"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Digi-Tatoo"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "nReturned": 1,
+      "executionTimeMillisEstimate": 85,
+      "works": 3,
+      "advanced": 1,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 2,
+      "restoreState": 2,
+      "isEOF": 1,
+      "docsExamined": 1,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 1,
+        "executionTimeMillisEstimate": 85,
+        "works": 2,
+        "advanced": 1,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 2,
+        "restoreState": 2,
+        "isEOF": 1,
+        "keyPattern": {
+          "details.k": 1,
+          "details.v": 1
+        },
+        "indexName": "idx_details_kv",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "details.k": [
+            "details"
+          ],
+          "details.v": [
+            "details"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "details.k": [
+            "[\"Color\", \"Color\"]"
+          ],
+          "details.v": [
+            "[\"Fresh Marble\", \"Fresh Marble\"]"
+          ]
+        },
+        "keysExamined": 1,
+        "seeks": 1,
+        "dupsTested": 1,
+        "dupsDropped": 0
+      }
+    },
+    "allPlansExecution": [
+      {
+        "nReturned": 1,
+        "executionTimeMillisEstimate": 85,
+        "totalKeysExamined": 1,
+        "totalDocsExamined": 1,
+        "score": 2.5002,
+        "executionStages": {
+          "stage": "FETCH",
+          "filter": {
+            "$and": [
+              {
+                "details": {
+                  "$elemMatch": {
+                    "$and": [
+                      {
+                        "k": {
+                          "$eq": "Color"
+                        }
+                      },
+                      {
+                        "v": {
+                          "$eq": "Fresh Marble"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "details": {
+                  "$elemMatch": {
+                    "$and": [
+                      {
+                        "k": {
+                          "$eq": "Brand"
+                        }
+                      },
+                      {
+                        "v": {
+                          "$eq": "Digi-Tatoo"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "nReturned": 1,
+          "executionTimeMillisEstimate": 85,
+          "works": 2,
+          "advanced": 1,
+          "needTime": 0,
+          "needYield": 0,
+          "saveState": 1,
+          "restoreState": 1,
+          "isEOF": 1,
+          "docsExamined": 1,
+          "alreadyHasObj": 0,
+          "inputStage": {
+            "stage": "IXSCAN",
+            "nReturned": 1,
+            "executionTimeMillisEstimate": 85,
+            "works": 2,
+            "advanced": 1,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 1,
+            "restoreState": 1,
+            "isEOF": 1,
+            "keyPattern": {
+              "details.k": 1,
+              "details.v": 1
+            },
+            "indexName": "idx_details_kv",
+            "isMultiKey": true,
+            "multiKeyPaths": {
+              "details.k": [
+                "details"
+              ],
+              "details.v": [
+                "details"
+              ]
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "details.k": [
+                "[\"Color\", \"Color\"]"
+              ],
+              "details.v": [
+                "[\"Fresh Marble\", \"Fresh Marble\"]"
+              ]
+            },
+            "keysExamined": 1,
+            "seeks": 1,
+            "dupsTested": 1,
+            "dupsDropped": 0
+          }
+        }
+      },
+      {
+        "nReturned": 1,
+        "executionTimeMillisEstimate": 20,
+        "totalKeysExamined": 2,
+        "totalDocsExamined": 2,
+        "score": 1.5002,
+        "executionStages": {
+          "stage": "FETCH",
+          "filter": {
+            "$and": [
+              {
+                "details": {
+                  "$elemMatch": {
+                    "$and": [
+                      {
+                        "k": {
+                          "$eq": "Brand"
+                        }
+                      },
+                      {
+                        "v": {
+                          "$eq": "Digi-Tatoo"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "details": {
+                  "$elemMatch": {
+                    "$and": [
+                      {
+                        "k": {
+                          "$eq": "Color"
+                        }
+                      },
+                      {
+                        "v": {
+                          "$eq": "Fresh Marble"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "nReturned": 1,
+          "executionTimeMillisEstimate": 20,
+          "works": 2,
+          "advanced": 1,
+          "needTime": 1,
+          "needYield": 0,
+          "saveState": 2,
+          "restoreState": 1,
+          "isEOF": 0,
+          "docsExamined": 2,
+          "alreadyHasObj": 0,
+          "inputStage": {
+            "stage": "IXSCAN",
+            "nReturned": 2,
+            "executionTimeMillisEstimate": 10,
+            "works": 2,
+            "advanced": 2,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 2,
+            "restoreState": 1,
+            "isEOF": 0,
+            "keyPattern": {
+              "details.k": 1,
+              "details.v": 1
+            },
+            "indexName": "idx_details_kv",
+            "isMultiKey": true,
+            "multiKeyPaths": {
+              "details.k": [
+                "details"
+              ],
+              "details.v": [
+                "details"
+              ]
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "details.k": [
+                "[\"Brand\", \"Brand\"]"
+              ],
+              "details.v": [
+                "[\"Digi-Tatoo\", \"Digi-Tatoo\"]"
+              ]
+            },
+            "keysExamined": 2,
+            "seeks": 1,
+            "dupsTested": 2,
+            "dupsDropped": 0
+          }
+        }
+      }
+    ]
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "$and": [
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Brand",
+              "v": "Digi-Tatoo"
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Color",
+              "v": "Fresh Marble"
+            }
+          }
+        }
+      ]
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "1574b8bbc048",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786275219, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786275219, 1)"
+}

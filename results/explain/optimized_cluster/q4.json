@@ -1,0 +1,204 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "details": {
+        "$elemMatch": {
+          "$and": [
+            {
+              "k": {
+                "$eq": "Brand"
+              }
+            },
+            {
+              "v": {
+                "$eq": "Digi-Tatoo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "queryHash": "7E68C7AC",
+    "planCacheKey": "584EBD69",
+    "optimizationTimeMillis": 3,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "FETCH",
+      "filter": {
+        "details": {
+          "$elemMatch": {
+            "$and": [
+              {
+                "k": {
+                  "$eq": "Brand"
+                }
+              },
+              {
+                "v": {
+                  "$eq": "Digi-Tatoo"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "details.k": 1,
+          "details.v": 1
+        },
+        "indexName": "idx_details_kv",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "details.k": [
+            "details"
+          ],
+          "details.v": [
+            "details"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "details.k": [
+            "[\"Brand\", \"Brand\"]"
+          ],
+          "details.v": [
+            "[\"Digi-Tatoo\", \"Digi-Tatoo\"]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 52,
+    "executionTimeMillis": 720,
+    "totalKeysExamined": 52,
+    "totalDocsExamined": 52,
+    "executionStages": {
+      "stage": "FETCH",
+      "filter": {
+        "details": {
+          "$elemMatch": {
+            "$and": [
+              {
+                "k": {
+                  "$eq": "Brand"
+                }
+              },
+              {
+                "v": {
+                  "$eq": "Digi-Tatoo"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "nReturned": 52,
+      "executionTimeMillisEstimate": 667,
+      "works": 53,
+      "advanced": 52,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 24,
+      "restoreState": 24,
+      "isEOF": 1,
+      "docsExamined": 52,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 52,
+        "executionTimeMillisEstimate": 87,
+        "works": 53,
+        "advanced": 52,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 24,
+        "restoreState": 24,
+        "isEOF": 1,
+        "keyPattern": {
+          "details.k": 1,
+          "details.v": 1
+        },
+        "indexName": "idx_details_kv",
+        "isMultiKey": true,
+        "multiKeyPaths": {
+          "details.k": [
+            "details"
+          ],
+          "details.v": [
+            "details"
+          ]
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "details.k": [
+            "[\"Brand\", \"Brand\"]"
+          ],
+          "details.v": [
+            "[\"Digi-Tatoo\", \"Digi-Tatoo\"]"
+          ]
+        },
+        "keysExamined": 52,
+        "seeks": 1,
+        "dupsTested": 52,
+        "dupsDropped": 0
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "details": {
+        "$elemMatch": {
+          "k": "Brand",
+          "v": "Digi-Tatoo"
+        }
+      }
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "a4c9b3d30f4a",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786275219, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786275219, 1)"
+}

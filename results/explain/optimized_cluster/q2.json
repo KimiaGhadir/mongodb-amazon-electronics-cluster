@@ -1,0 +1,148 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {},
+    "queryHash": "80E0D607",
+    "planCacheKey": "80E0D607",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "LIMIT",
+      "limitAmount": 20,
+      "inputStage": {
+        "stage": "FETCH",
+        "inputStage": {
+          "stage": "IXSCAN",
+          "keyPattern": {
+            "parent_asin": 1
+          },
+          "indexName": "idx_parent_asin",
+          "isMultiKey": false,
+          "multiKeyPaths": {
+            "parent_asin": []
+          },
+          "isUnique": true,
+          "isSparse": false,
+          "isPartial": false,
+          "indexVersion": 2,
+          "direction": "forward",
+          "indexBounds": {
+            "parent_asin": [
+              "[MinKey, MaxKey]"
+            ]
+          }
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 20,
+    "executionTimeMillis": 271,
+    "totalKeysExamined": 20,
+    "totalDocsExamined": 20,
+    "executionStages": {
+      "stage": "LIMIT",
+      "nReturned": 20,
+      "executionTimeMillisEstimate": 267,
+      "works": 21,
+      "advanced": 20,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 9,
+      "restoreState": 9,
+      "isEOF": 1,
+      "limitAmount": 20,
+      "inputStage": {
+        "stage": "FETCH",
+        "nReturned": 20,
+        "executionTimeMillisEstimate": 267,
+        "works": 20,
+        "advanced": 20,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 9,
+        "restoreState": 9,
+        "isEOF": 0,
+        "docsExamined": 20,
+        "alreadyHasObj": 0,
+        "inputStage": {
+          "stage": "IXSCAN",
+          "nReturned": 20,
+          "executionTimeMillisEstimate": 0,
+          "works": 20,
+          "advanced": 20,
+          "needTime": 0,
+          "needYield": 0,
+          "saveState": 9,
+          "restoreState": 9,
+          "isEOF": 0,
+          "keyPattern": {
+            "parent_asin": 1
+          },
+          "indexName": "idx_parent_asin",
+          "isMultiKey": false,
+          "multiKeyPaths": {
+            "parent_asin": []
+          },
+          "isUnique": true,
+          "isSparse": false,
+          "isPartial": false,
+          "indexVersion": 2,
+          "direction": "forward",
+          "indexBounds": {
+            "parent_asin": [
+              "[MinKey, MaxKey]"
+            ]
+          },
+          "keysExamined": 20,
+          "seeks": 1,
+          "dupsTested": 0,
+          "dupsDropped": 0
+        }
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {},
+    "sort": {
+      "parent_asin": 1
+    },
+    "limit": 20,
+    "singleBatch": true,
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "a4c9b3d30f4a",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786275189, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786275189, 1)"
+}

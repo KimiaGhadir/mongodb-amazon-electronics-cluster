@@ -1,0 +1,210 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "$and": [
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Brand"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Digi-Tatoo"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "$and": [
+                {
+                  "k": {
+                    "$eq": "Color"
+                  }
+                },
+                {
+                  "v": {
+                    "$eq": "Fresh Marble"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "queryHash": "1BAD40F5",
+    "planCacheKey": "1BAD40F5",
+    "optimizationTimeMillis": 3,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "COLLSCAN",
+      "filter": {
+        "$and": [
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Brand"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Digi-Tatoo"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Color"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Fresh Marble"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "direction": "forward"
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 1,
+    "executionTimeMillis": 57428,
+    "totalKeysExamined": 0,
+    "totalDocsExamined": 1610012,
+    "executionStages": {
+      "stage": "COLLSCAN",
+      "filter": {
+        "$and": [
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Brand"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Digi-Tatoo"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "details": {
+              "$elemMatch": {
+                "$and": [
+                  {
+                    "k": {
+                      "$eq": "Color"
+                    }
+                  },
+                  {
+                    "v": {
+                      "$eq": "Fresh Marble"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "nReturned": 1,
+      "executionTimeMillisEstimate": 47501,
+      "works": 1610013,
+      "advanced": 1,
+      "needTime": 1610011,
+      "needYield": 0,
+      "saveState": 1949,
+      "restoreState": 1949,
+      "isEOF": 1,
+      "direction": "forward",
+      "docsExamined": 1610012
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "$and": [
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Brand",
+              "v": "Digi-Tatoo"
+            }
+          }
+        },
+        {
+          "details": {
+            "$elemMatch": {
+              "k": "Color",
+              "v": "Fresh Marble"
+            }
+          }
+        }
+      ]
+    },
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "1574b8bbc048",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786240988, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786240988, 1)"
+}

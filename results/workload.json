@@ -1,0 +1,28 @@
+{
+    "q1_asin":  "B08K7KC4GR",
+    "q3_category":  "Micro SD Cards",
+    "q4":  {
+               "k":  "Brand",
+               "v":  "Digi-Tatoo"
+           },
+    "q5_and":  [
+                   {
+                       "k":  "Brand",
+                       "v":  "Digi-Tatoo"
+                   },
+                   {
+                       "k":  "Color",
+                       "v":  "Fresh Marble"
+                   }
+               ],
+    "q5_or":  [
+                  {
+                      "k":  "Brand",
+                      "v":  "Digi-Tatoo"
+                  },
+                  {
+                      "k":  "Publisher",
+                      "v":  "Fourth Estate; First Edition (January 1, 2009)"
+                  }
+              ]
+}

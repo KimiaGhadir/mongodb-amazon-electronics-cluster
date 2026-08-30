@@ -1,0 +1,28 @@
+{
+  "q1_asin": "B01MCZP7RF",
+  "q3_category": "Surveillance DVR Kits",
+  "q4": {
+    "k": "Is Discontinued By Manufacturer",
+    "v": "No"
+  },
+  "q5_and": [
+    {
+      "k": "Is Discontinued By Manufacturer",
+      "v": "No"
+    },
+    {
+      "k": "Date First Available",
+      "v": "November 22, 2017"
+    }
+  ],
+  "q5_or": [
+    {
+      "k": "Is Discontinued By Manufacturer",
+      "v": "No"
+    },
+    {
+      "k": "Date First Available",
+      "v": "August 2, 2014"
+    }
+  ]
+}

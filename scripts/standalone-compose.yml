@@ -1,0 +1,13 @@
+# Kept as an optional compatibility file. The preferred standalone benchmark
+# service is now also available in ../docker-compose.yml under profile
+# "benchmark" so the Python dev container can reach it by service name.
+services:
+  mongo-standalone:
+    image: mongo:7
+    container_name: mongo-standalone
+    ports:
+      - "27117:27017"
+    volumes:
+      - standalone_data:/data/db
+volumes:
+  standalone_data:

@@ -1,0 +1,108 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "amazon_electronics.products",
+    "indexFilterSet": false,
+    "parsedQuery": {},
+    "queryHash": "80E0D607",
+    "planCacheKey": "80E0D607",
+    "optimizationTimeMillis": 1,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "SORT",
+      "sortPattern": {
+        "parent_asin": 1
+      },
+      "memLimit": 104857600,
+      "limitAmount": 20,
+      "type": "simple",
+      "inputStage": {
+        "stage": "COLLSCAN",
+        "direction": "forward"
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 20,
+    "executionTimeMillis": 67058,
+    "totalKeysExamined": 0,
+    "totalDocsExamined": 1610012,
+    "executionStages": {
+      "stage": "SORT",
+      "nReturned": 20,
+      "executionTimeMillisEstimate": 57684,
+      "works": 1610034,
+      "advanced": 20,
+      "needTime": 1610013,
+      "needYield": 0,
+      "saveState": 1901,
+      "restoreState": 1901,
+      "isEOF": 1,
+      "sortPattern": {
+        "parent_asin": 1
+      },
+      "memLimit": 104857600,
+      "limitAmount": 20,
+      "type": "simple",
+      "totalDataSizeSorted": 46515,
+      "usedDisk": false,
+      "spills": 0,
+      "spilledDataStorageSize": 0,
+      "inputStage": {
+        "stage": "COLLSCAN",
+        "nReturned": 1610012,
+        "executionTimeMillisEstimate": 57356,
+        "works": 1610013,
+        "advanced": 1610012,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 1901,
+        "restoreState": 1901,
+        "isEOF": 1,
+        "direction": "forward",
+        "docsExamined": 1610012
+      }
+    },
+    "allPlansExecution": []
+  },
+  "command": {
+    "find": "products",
+    "filter": {},
+    "sort": {
+      "parent_asin": 1
+    },
+    "limit": 20,
+    "singleBatch": true,
+    "$db": "amazon_electronics"
+  },
+  "serverInfo": {
+    "host": "1574b8bbc048",
+    "port": 27017,
+    "version": "7.0.39",
+    "gitVersion": "636e201a5c0732b95e88bb011a72938ce01d290b"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "forceClassicEngine"
+  },
+  "ok": 1.0,
+  "$clusterTime": {
+    "clusterTime": "Timestamp(1786240811, 1)",
+    "signature": {
+      "hash": "b'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'",
+      "keyId": 0
+    }
+  },
+  "operationTime": "Timestamp(1786240811, 1)"
+}
